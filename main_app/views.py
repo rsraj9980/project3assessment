@@ -12,3 +12,7 @@ class WishItemCreate(CreateView):
     model = Item
     fields = '__all__'
     success_url = '/'
+
+class WishItemDelete(DeleteView):
+    model = Item
+    success_url = '/'

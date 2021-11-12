@@ -6,18 +6,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">   
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <title>WishList</title>
 </head>
 <body>
-     <h1>Wish List Items</h1>
-    {% for item in item_list %}
-
-    {% empty %}
-    <h3>No Wish Items Exist</h3>
-    <hr>
-    {% endfor %}
+    <h1>Wish List Items</h1>
+    <table class = "pure-table pure-table-striped" >
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in item_list %}
+                <tr>
+                    <td>
+                        {{ item.description }}
+                    </td>
+                    <td>
+                        <form action="{% url 'item_delete' item.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">X</button>
+                          </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <h3>No Wish Items Exist</h3>
+                {% endfor %}
+            </tbody>
+          </table>
+        <hr>
     <a class = "pure-button"  href="{% url 'item_create' %}" >Add A Wish Item</a>
 </body>
 </html>
