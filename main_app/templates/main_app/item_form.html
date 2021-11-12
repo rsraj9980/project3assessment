@@ -11,13 +11,12 @@
     <title>WishList</title>
 </head>
 <body>
-     <h1>Wish List Items</h1>
-    {% for item in item_list %}
-
-    {% empty %}
-    <h3>No Wish Items Exist</h3>
-    <hr>
-    {% endfor %}
-    <a class = "pure-button"  href="{% url 'item_create' %}" >Add A Wish Item</a>
+     <h1>Add Wish Item</h1>
+     <hr>
+     <form class = "pure-form" action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class= "pure-button" type="submit" value="ADD ITEM">
+      </form>
 </body>
 </html>
