@@ -6,7 +6,7 @@ table {
     margin: 2rem auto;
 }
 
-table button {
+table a {
     color: red;
     text-decoration: none;
 }

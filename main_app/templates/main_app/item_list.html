@@ -26,10 +26,7 @@
                         {{ item.description }}
                     </td>
                     <td>
-                        <form action="{% url 'item_delete' item.id %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit">X</button>
-                          </form>
+                        <a href="{% url 'item_delete' item.id %}">X</a>                       
                     </td>
                 </tr>
                 {% empty %}
